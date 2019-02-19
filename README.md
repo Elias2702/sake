@@ -2,7 +2,9 @@
 
 
 
-# Consignes : https://github.com/becodeorg/LIE-Hamilton-1.7/tree/master/02-La-colline/02-NodeJS/04a-mastermind
+# Consignes
+
+https://github.com/becodeorg/LIE-Hamilton-1.7/tree/master/02-La-colline/02-NodeJS/04a-mastermind
 
 # Node.JS: Mastermind
 

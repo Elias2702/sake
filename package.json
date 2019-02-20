@@ -18,6 +18,7 @@
   "homepage": "https://github.com/Elias2702/sake#readme",
   "dependencies": {
     "express": "^4.16.4",
+    "sass": "^1.17.0",
     "socket.io": "^2.2.0"
   },
   "devDependencies": {

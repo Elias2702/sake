@@ -1,11 +1,10 @@
-
 import cors from "cors";
 import express from "express";
 import path from "path";
 
-var app = express();
-var server = require('http').Server(app);
-var io = require('socket.io')(server);
+let app = express(),
+    server = require("http").Server(app), // eslint-disable-line new-cap
+    io = require("socket.io")(server);
 
 const {APP_PORT} = process.env;
 
@@ -22,9 +21,9 @@ server.listen(APP_PORT, () =>
     console.log(`🚀 Server is listening on port ${APP_PORT}.`),
 );
 
-io.on('connection', function (socket) {
-    socket.emit('news', { hello: 'world' });
-    socket.on('my other event', function (data) {
+io.on("connection", socket => {
+    socket.emit("news", {hello: "world"});
+    socket.on("my other event", data => {
         console.log(data);
     });
 });

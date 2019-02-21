@@ -18,11 +18,15 @@
   "homepage": "https://github.com/Elias2702/sake#readme",
   "dependencies": {
     "express": "^4.16.4",
+    "parcel": "^1.11.0",
+    "parcel-bundler": "^1.11.0",
     "sass": "^1.17.0",
     "socket.io": "^2.2.0",
     "socket.io-client": "^2.2.0"
   },
   "devDependencies": {
+    "@babel/preset-react": "^7.0.0",
+    "babel": "^6.23.0",
     "nodemon": "^1.18.10"
   }
 }

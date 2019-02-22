@@ -41,12 +41,17 @@
     "uglifyjs-webpack-plugin": "^2.0.1",
     "webpack": "^4.20.2",
     "webpack-cli": "^3.1.2",
-    "webpack-dev-server": "^3.1.10"
-  },
-  "dependencies": {
+    "webpack-dev-server": "^3.1.10",
     "express": "^4.16.4",
     "react": "^16.7.0",
     "react-dom": "^16.7.0"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0",
+    "socket.io": "^2.2.0"
   },
   "husky": {
     "hooks": {

@@ -19,11 +19,10 @@ export default class HelloWorld extends React.Component {
 
         this.initSocket = this.initSocket.bind(this);
         this.sendMessage = this.sendMessage.bind(this);
-        this.disconnect = this.disconnect.bind(this);
     }
 
-    initSocket() {
-        this.setState({
+    async initSocket() {
+        await this.setState({
             socket: io.connect("http://192.168.99.100:8082"),
         });
         this.state.socket.on("news", data => {

@@ -26,4 +26,10 @@ io.on("connection", socket => {
     socket.on("my other event", data => {
         console.log(data);
     });
+    socket.on("test Message", data => {
+        console.log(data);
+    });
+    socket.on("disconnect", () => {
+        console.log("Disconnected");
+    });
 });

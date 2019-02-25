@@ -24,7 +24,7 @@ export default class HelloWorld extends React.Component {
 
     async initSocket() {
         await this.setState({
-            socket: io.connect("http://192.168.99.100:8082"),
+            socket: io(),
         });
         this.state.socket.on("news", data => {
             console.log(data);

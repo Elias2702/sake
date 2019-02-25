@@ -4,7 +4,8 @@ import path from "path";
 
 let app = express(),
     server = require("http").Server(app), // eslint-disable-line new-cap
-    io = require("socket.io")(server);
+    io = require("socket.io")(server),
+    index = 1;
 
 const {APP_PORT} = process.env;
 
@@ -27,7 +28,8 @@ io.on("connection", socket => {
         console.log(data);
     });
     socket.on("test Message", data => {
-        console.log(data);
+        console.log(`${data} ${index}`);
+        index++;
     });
     socket.on("disconnect", () => {
         console.log("Disconnected");

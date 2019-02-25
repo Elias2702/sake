@@ -10,10 +10,10 @@ export default class Home extends React.Component {
             serverName: "Server name",
             socket: "",
         };
-        this.handelChange = this.handelChange.bind(this);
+        this.handleChange = this.handleChange.bind(this);
         this.initSocket = this.initSocket.bind(this);
     }
-    handelChange(data) {
+    handleChange(data) {
         this.setState({
             [data.target.name]: data.target.value,
         });
@@ -38,7 +38,7 @@ export default class Home extends React.Component {
                         <label>{"creation d'un nouveau serveur "}</label>
                         <input
                             type="text"
-                            onChange={this.handelChange}
+                            onChange={this.handleChange}
                             name="newServerName"
                             value={this.state.serverName}
                         />
@@ -48,7 +48,7 @@ export default class Home extends React.Component {
                             max="4"
                             min="1"
                             value={this.state.nbrPlayer}
-                            onChange={this.handelChange}
+                            onChange={this.handleChange}
                             name="nbrPlayer"
                         />
                         <button onClick={this.initSocket}>{"Create"}</button>

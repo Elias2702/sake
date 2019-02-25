@@ -5,6 +5,7 @@ import {Route, BrowserRouter as Router, Switch} from "react-router-dom";
 
 import Login from "./login";
 import Home from "./home";
+import Chat from "./chat";
 
 class Routes extends React.Component {
     render() {
@@ -13,7 +14,8 @@ class Routes extends React.Component {
                 <div className="container">
                     <Switch>
                         <Route exact path="/" component={Login} />
-                        <Route path="/coucou" component={Home} />
+                        <Route path="/home" component={Home} />
+                        <Route path="/chat" component={Chat} />
                     </Switch>
                 </div>
             </Router>

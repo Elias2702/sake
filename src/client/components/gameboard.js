@@ -19,6 +19,8 @@ export default class Gameboard extends React.Component {
         };
     }
     render() {
-        return <ColorPicker colorList={this.state.colorList} />;
+        return (
+            <ColorPicker colorList={this.state.colorList} availableColor={6} />
+        );
     }
 }

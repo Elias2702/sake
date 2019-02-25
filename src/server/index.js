@@ -23,16 +23,17 @@ server.listen(APP_PORT, () =>
 );
 
 io.on("connection", socket => {
-    socket.on("connectionAttempt", () => {
+    socket.on("connectionAttempt", data => {
         index = index + 1;
-        console.log("New player");
+        console.log(`New player has joined: ${data.playername}`);
         socket.emit("connectionSuccessful", {
-            welcome: `Hello, you are player number ${index}`,
+            welcome: `Hello ${data.playername}, you are player number ${index}`,
             playerNumber: index,
+            playerName: data.playername,
         });
     });
     socket.on("Message", data => {
-        io.emit("Message", {message: data.message});
+        io.emit("Message", {messages: data.messages});
         index++;
     });
     socket.on("Disconnect", () => {

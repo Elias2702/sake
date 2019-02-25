@@ -1,5 +1,5 @@
 import * as React from "react";
-import ColorPawn from "./ColorPawn";
+import ColorPawn from "./colorPawn";
 
 export default class ColorPicker extends React.Component {
     constructor(props) {

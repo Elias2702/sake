@@ -13,8 +13,8 @@ class Routes extends React.Component {
             <Router>
                 <div className="container">
                     <Switch>
-                        <Route path="/" component={Login} />
-                        <Route exact path="/game" component={Gameboard} />
+                        <Route exact path="/" component={Login} />
+                        <Route path="/game" component={Gameboard} />
                     </Switch>
                 </div>
             </Router>

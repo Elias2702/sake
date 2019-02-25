@@ -1,5 +1,6 @@
 import * as React from "react";
 import io from "socket.io-client";
+import "../scss/login.scss";
 
 export default class Login extends React.Component {
     constructor(props) {
@@ -49,11 +50,11 @@ export default class Login extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="loginForm">
                 <form>
                     <input
                         type="text"
-                        name="message"
+                        name="nickname"
                         placeholder="Choose a Nickname"
                         value={this.state.message}
                         onChange={this.handleChange}

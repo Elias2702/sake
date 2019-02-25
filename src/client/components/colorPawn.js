@@ -8,6 +8,7 @@ export default class ColorPawn extends React.Component {
             colorIndex: 0,
         };
         this.colorUp = this.colorUp.bind(this);
+        this.colorDown = this.colorDown.bind(this);
     }
 
     colorUp() {
@@ -18,6 +19,18 @@ export default class ColorPawn extends React.Component {
         } else {
             this.setState(state => ({
                 colorIndex: state.colorIndex + 1,
+            }));
+        }
+    }
+
+    colorDown() {
+        if (this.state.colorIndex === 0) {
+            this.setState({
+                colorIndex: this.props.colorList.length - 1,
+            });
+        } else {
+            this.setState(state => ({
+                colorIndex: state.colorIndex - 1,
             }));
         }
     }
@@ -38,7 +51,11 @@ export default class ColorPawn extends React.Component {
                         ],
                     }}
                 />
-                <i className="fa fa-angle-down" aria-hidden="true" />
+                <i
+                    className="fa fa-angle-down"
+                    aria-hidden="true"
+                    onClick={this.colorDown}
+                />
             </div>
         );
     }

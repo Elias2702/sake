@@ -1,5 +1,57 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: rgba(255,255,255,0.3);
+    background-color: rgba(22, 35, 46, 1);
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.chat.card {
+    width: 40%;
+    max-width: 40%;
+    max-height: 50rem;
+    margin-left: 5rem;
+    background-color: rgba(255,255,255,0.7);
+    border-radius: 2rem;
+    padding: 3rem;
+}
+
+.chat.card h1 {
+    font-size: 1.5rem;
+    margin-top: 0;
+}
+
+.chat.card input {
+    border: none;
+    border-radius: 0.5rem;
+    height: 2.5rem;
+    width: 15rem;
+    padding-left: 1rem;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.chat.card textarea {
+    border: none;
+    border-radius: 0.5rem;
+    height: 10rem;
+    width: 15rem;
+    padding-left: 1rem;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    
+}
+
+.chat.card button {
+    border: none;
+    border-radius: 0.5rem;
+    height: 2.5rem;
+    font-size: 1.2rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin-left: 1rem;
+    cursor: pointer;
+}
+
+.chat.card button:hover {
+    background-color: rgba(123, 239, 178, 1);
 }

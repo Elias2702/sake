@@ -22,7 +22,7 @@ export default class Home extends React.Component {
 
     async initSocket() {
         await this.setState({
-            socket: io(),
+            socket: io.connect("http://localhost:8082"),
         });
         this.state.socket.on("news", data => {
             console.log(data);
@@ -64,6 +64,11 @@ export default class Home extends React.Component {
                     />
                     <button onClick={this.initSocket}>{"Join"}</button>
                 </form>
+                <hr />
+                <br />
+                <br />
+                <br />
+
                 <Chat />
             </div>
         );

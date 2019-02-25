@@ -5,7 +5,7 @@ import path from "path";
 let app = express(),
     server = require("http").Server(app), // eslint-disable-line new-cap
     io = require("socket.io")(server),
-    connectedPlayer = 0;
+    index = 0;
 
 const {APP_PORT} = process.env;
 
@@ -23,19 +23,21 @@ server.listen(APP_PORT, () =>
 );
 
 io.on("connection", socket => {
-    connectedPlayer++;
-    console.log(connectedPlayer);
-    socket.emit("news", {hello: "world"});
-    socket.on("my other event", data => {
-        console.log(data);
+    socket.on("connectionAttempt", () => {
+        index = index + 1;
+        console.log("New player");
+        socket.emit("connectionSuccessful", {
+            welcome: `Hello, you are player number ${index}`,
+            playerNumber: index,
+        });
     });
-    socket.on("test Message", data => {
-        console.log(data);
-        io.emit("test Message", data);
+    socket.on("Message", data => {
+        io.emit("Message", {message: data.message});
+        index++;
     });
-    socket.on("disconnect", () => {
-        connectedPlayer--;
+    socket.on("Disconnect", () => {
         console.log("Disconnected");
+        return;
     });
     socket.join("test room");
 });

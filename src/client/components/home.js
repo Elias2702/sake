@@ -6,7 +6,8 @@ export default class Home extends React.Component {
         super(props);
         this.state = {
             nbrPlayer: 1,
-            userName: "Guest",
+            newserverName: "newServer",
+            serverName: "Server name",
             socket: "",
         };
         this.handelChange = this.handelChange.bind(this);
@@ -26,33 +27,41 @@ export default class Home extends React.Component {
             console.log(data);
             this.state.socket.emit("my other event", {my: "data"});
         });
-        this.state.socket.on("test Message", data => {
-            console.log(data);
-            this.setState({
-                messages: data.message,
-            });
-        });
     }
 
     render() {
         return (
             <div className="homeContainer">
                 <h1>{"Mastermind"}</h1>
+                <div>
+                    <form>
+                        <label>{"creation d'un nouveau serveur "}</label>
+                        <input
+                            type="text"
+                            onChange={this.handelChange}
+                            name="newServerName"
+                            value={this.state.serverName}
+                        />
+                        <label>{"nombre de joueur"}</label>
+                        <input
+                            type="number"
+                            max="4"
+                            min="1"
+                            value={this.state.nbrPlayer}
+                            onChange={this.handelChange}
+                            name="nbrPlayer"
+                        />
+                        <button onClick={this.initSocket}>{"Create"}</button>
+                    </form>
+                </div>
                 <form>
-                    <button onClick={this.initSocket}>{"Join"}</button>
+                    <label>{"Join a server"}</label>
                     <input
                         type="text"
                         onChange={this.handelChange}
-                        name="userName"
+                        name="serverName"
                     />
-                    <input
-                        type="number"
-                        max="4"
-                        min="1"
-                        value={this.state.nbrPlayer}
-                        onChange={this.handelChange}
-                        name="nbrPlayer"
-                    />
+                    <button onClick={this.initSocket}>{"Join"}</button>
                 </form>
             </div>
         );

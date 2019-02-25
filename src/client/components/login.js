@@ -54,7 +54,7 @@ export default class Login extends React.Component {
                     <input
                         type="text"
                         name="message"
-                        placeholder="Your message here"
+                        placeholder="Choose a Nickname"
                         value={this.state.message}
                         onChange={this.handleChange}
                     />

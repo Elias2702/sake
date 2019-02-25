@@ -1,11 +1,3 @@
-/* becodeorg/bookshelf
- *
- * /src/client/components/hello.js - Hello Component
- *
- * coded by leny@BeCode
- * started at 18/01/2019
- */
-
 import * as React from "react";
 import io from "socket.io-client";
 
@@ -23,7 +15,7 @@ export default class HelloWorld extends React.Component {
 
     async initSocket() {
         await this.setState({
-            socket: io.connect("http://192.168.99.100:8082"),
+            socket: io(),
         });
         this.state.socket.on("news", data => {
             console.log(data);

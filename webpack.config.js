@@ -1,13 +1,3 @@
-/* becodeorg/bookshelf
- *
- * /webpack.config.js - Webpack configuration
- *
- * coded by leny@BeCode
- * started at 18/01/2019
- */
-
-/* eslint-disable */
-
 const webpack = require("webpack");
 const {resolve} = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");

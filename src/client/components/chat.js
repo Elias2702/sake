@@ -104,7 +104,6 @@ export default class HelloWorld extends React.Component {
                 </form>
                 <form>
                     <textarea
-                        type="textarea"
                         name="message"
                         placeholder="Your message here"
                         rows="5"
@@ -116,7 +115,7 @@ export default class HelloWorld extends React.Component {
                 <p>{`You are player number: ${this.state.playernumber}`}</p>
                 <p>{this.state.welcomeMessage}</p>
                 <hr />
-                <p>{messageItem}</p>
+                {messageItem}
             </div>
         );
     }

@@ -5,6 +5,68 @@ body {
     font-family: 'Source Sans Pro', sans-serif;
 }
 
+// ======= JOIN SERVER CONSOLE
+
+.join.card {
+    width: 40%;
+    max-width: 40%;
+    max-height: 50rem;
+    margin-left: 5rem;
+    background-color: rgba(255,255,255,0.7);
+    border-radius: 2rem;
+    padding: 3rem;
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+}
+
+.join.card h1 {
+    font-size: 1.5rem;
+    margin-top: 0;
+}
+
+.join.card p , label {
+    font-size: 1.2rem;
+    margin-top: 0
+}
+
+.join.card input {
+    border: none;
+    border-radius: 0.5rem;
+    height: 2.5rem;
+    width: 15rem;
+    padding-left: 1rem;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.join.card select {
+    border: none;
+    border-radius: 0.5rem;
+    height: 2.5rem;
+    width: 7.5rem;
+    padding-left: 1rem;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    margin-left: 1rem;
+}
+
+.join.card button {
+    border: none;
+    border-radius: 0.5rem;
+    height: 2.5rem;
+    font-size: 1.2rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin-left: 1rem;
+    cursor: pointer;
+}
+
+.join.card button:hover {
+    background-color: rgba(123, 239, 178, 1);
+}
+
+// ======= CHAT CONSOLE
+
 .chat.card {
     width: 40%;
     max-width: 40%;
@@ -38,7 +100,9 @@ body {
     padding-left: 1rem;
     font-size: 1.2rem;
     margin-bottom: 1rem;
-
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
 }
 
 .chat.card button {

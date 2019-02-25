@@ -28,7 +28,7 @@ io.on("connection", socket => {
     });
     socket.on("test Message", data => {
         console.log(data);
-        socket.emit("test Message", data);
+        io.emit("test Message", data);
     });
     socket.on("disconnect", () => {
         console.log("Disconnected");

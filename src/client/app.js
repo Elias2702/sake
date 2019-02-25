@@ -1,6 +1,7 @@
 import * as React from "react";
 import ReactDOM from "react-dom";
-import Homepage from "./components/homepage";
-import "./css/app.css";
+import "./scss/app.scss";
 
-ReactDOM.render(<Homepage />, document.querySelector("#app"));
+import Routes from "./components/routes";
+
+ReactDOM.render(<Routes />, document.querySelector("#app"));

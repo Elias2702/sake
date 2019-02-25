@@ -6,6 +6,7 @@ module.exports = env => {
     const plugins = [
         new webpack.EnvironmentPlugin({
             NODE_ENV: env === "dev" ? "development" : "production",
+            // eslint-disable-next-line global-require
             VERSION: require("./package.json").version,
             BUILD_TIME: Date.now(),
         }),
@@ -51,6 +52,10 @@ module.exports = env => {
         entry: ["./app.js"],
         module: {
             rules: [
+                {
+                    test: /\.scss/,
+                    use: ["style-loader", "css-loader", "sass-loader"],
+                },
                 {
                     test: /\.(png|jpg|gif)$/,
                     use: [

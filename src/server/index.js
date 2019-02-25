@@ -4,7 +4,8 @@ import path from "path";
 
 let app = express(),
     server = require("http").Server(app), // eslint-disable-line new-cap
-    io = require("socket.io")(server);
+    io = require("socket.io")(server),
+    connectedPlayer = 0;
 
 const {APP_PORT} = process.env;
 
@@ -22,6 +23,8 @@ server.listen(APP_PORT, () =>
 );
 
 io.on("connection", socket => {
+    connectedPlayer++;
+    console.log(connectedPlayer);
     socket.emit("news", {hello: "world"});
     socket.on("my other event", data => {
         console.log(data);
@@ -31,6 +34,7 @@ io.on("connection", socket => {
         io.emit("test Message", data);
     });
     socket.on("disconnect", () => {
+        connectedPlayer--;
         console.log("Disconnected");
     });
     socket.join("test room");

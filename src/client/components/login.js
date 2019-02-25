@@ -1,7 +1,7 @@
 import * as React from "react";
 import io from "socket.io-client";
 
-export default class HelloWorld extends React.Component {
+export default class Login extends React.Component {
     constructor(props) {
         super(props);
 
@@ -11,7 +11,6 @@ export default class HelloWorld extends React.Component {
         };
 
         this.initSocket = this.initSocket.bind(this);
-        this.sendMessage = this.sendMessage.bind(this);
         this.disconnect = this.disconnect.bind(this);
         this.handleChange = this.handleChange.bind(this);
     }
@@ -38,12 +37,6 @@ export default class HelloWorld extends React.Component {
         });
     }
 
-    sendMessage() {
-        this.state.socket.emit("Message", {
-            message: this.state.message,
-        });
-    }
-
     disconnect() {
         this.state.socket.emit("Disconnect", () => {
             console.log("Disconnected");
@@ -57,7 +50,6 @@ export default class HelloWorld extends React.Component {
     render() {
         return (
             <div>
-                <button onClick={this.initSocket}>{"Join"}</button>
                 <form>
                     <input
                         type="text"
@@ -66,9 +58,8 @@ export default class HelloWorld extends React.Component {
                         value={this.state.message}
                         onChange={this.handleChange}
                     />
+                    <button onClick={this.initSocket}>{"Join"}</button>
                 </form>
-                <button onClick={this.sendMessage}>{"Send Message"}</button>
-                <button onClick={this.disconnect}>{"Disconnect"}</button>
                 <hr />
                 <small>{"becode/Mastermind"}</small>
                 <hr />

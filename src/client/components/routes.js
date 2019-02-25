@@ -4,6 +4,7 @@ import {Route, BrowserRouter as Router, Switch} from "react-router-dom";
 // COMPONENTS IMPORT //
 
 import Login from "./login";
+/* import Home from "./home"; */
 import Gameboard from "./gameboard";
 
 class Routes extends React.Component {

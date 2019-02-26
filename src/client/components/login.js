@@ -25,7 +25,6 @@ export default class Login extends React.Component {
         });
         this.state.socket.on("connectionSuccessful", data => {
             this.setState({
-                playernumber: data.playerNumber,
                 welcomeMessage: `Hello ${
                     data.playerName
                 }, you can now send and recieve messages`,

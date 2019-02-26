@@ -46,7 +46,8 @@ export default class HelloWorld extends React.Component {
         });
     }
 
-    sendMessage() {
+    sendMessage(e) {
+        e.preventDefault();
         this.setState({
             index: this.state.index + 1,
         });

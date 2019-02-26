@@ -10,6 +10,7 @@ export default class Join extends React.Component {
             serverName: "Server name",
             socket: "",
             playername: "",
+            welcomeMessage: "",
         };
         this.handleChange = this.handleChange.bind(this);
         this.handlePlayerName = this.handlePlayerName.bind(this);
@@ -22,17 +23,27 @@ export default class Join extends React.Component {
         });
     }
 
-    handlePlayerName(event) {
-        this.setState({playername: event.target.value});
-    }
-
-    async initSocket() {
+    async initSocket(e) {
+        e.preventDefault();
         await this.setState({
-            socket: io.connect("http://localhost:8082"),
+            socket: io(),
         });
-        this.state.socket.on("news", data => {
-            console.log(data);
-            this.state.socket.emit("my other event", {my: "data"});
+        this.state.socket.emit("connectionAttempt", {
+            playername: this.state.playername,
+        });
+        this.state.socket.on("connectionSuccessful", data => {
+            this.setState({
+                playernumber: data.playerNumber,
+                welcomeMessage: `Hello ${
+                    data.playerName
+                }, you can now send and recieve messages`,
+            });
+            console.log(data.welcome);
+        });
+        this.state.socket.on("Message", data => {
+            this.setState({
+                messages: data.messages,
+            });
         });
     }
 
@@ -47,7 +58,7 @@ export default class Join extends React.Component {
                             name="playername"
                             placeholder="Your name here"
                             value={this.state.playername}
-                            onChange={this.handlePlayerName}
+                            onChange={this.props.handlePlayerName}
                         />
                         <button onClick={this.initSocket}>{"Join"}</button>
                         <button onClick={this.disconnect}>

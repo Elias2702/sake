@@ -17,10 +17,12 @@ export default class Gameboard extends React.Component {
                 "pink",
             ],
             colorIndex: [0, 0, 0, 0, 0, 0],
+            previewsPlay: [],
         };
 
         this.colorUp = this.colorUp.bind(this);
         this.colorDown = this.colorDown.bind(this);
+        this.submitColors = this.submitColors.bind(this);
     }
 
     colorUp(key) {
@@ -55,6 +57,20 @@ export default class Gameboard extends React.Component {
         }
     }
 
+    submitColors(e) {
+        e.preventDefault();
+        let tempTable = [],
+            temp = this.state.previewsPlay;
+
+        this.state.colorIndex.forEach(value => {
+            tempTable.push(value);
+        });
+        temp.push(tempTable);
+        this.setState({
+            previewsPlay: temp,
+        });
+    }
+
     render() {
         return (
             <ColorPicker
@@ -63,6 +79,7 @@ export default class Gameboard extends React.Component {
                 colorUp={this.colorUp}
                 colorList={this.state.colorList}
                 availableColor={6}
+                submitColors={this.submitColors}
             />
         );
     }

@@ -7,11 +7,8 @@ export default class HelloWorld extends React.Component {
         super(props);
         this.state = {
             socket: "",
-            message: "",
             playername: "",
-            playernumber: "",
-            welcomeMessage: "Please enter your name and click Join",
-            index: 0,
+            message: "",
             messages: [],
         };
 
@@ -93,17 +90,6 @@ export default class HelloWorld extends React.Component {
             <div className="chat card">
                 <h1>{"Talk to your fellow players ;-)"}</h1>
                 <form>
-                    <input
-                        type="text"
-                        name="playername"
-                        placeholder="Your name here"
-                        value={this.state.playername}
-                        onChange={this.handlePlayerName}
-                    />
-                    <button onClick={this.initSocket}>{"Join"}</button>
-                    <button onClick={this.disconnect}>{"Disconnect"}</button>
-                </form>
-                <form>
                     <textarea
                         name="message"
                         placeholder="Your message here"
@@ -113,8 +99,6 @@ export default class HelloWorld extends React.Component {
                     />
                     <button onClick={this.sendMessage}>{"Send Message"}</button>
                 </form>
-                <p>{`You are player number: ${this.state.playernumber}`}</p>
-                <p>{this.state.welcomeMessage}</p>
                 <hr />
                 {messageItem}
             </div>

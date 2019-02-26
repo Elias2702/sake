@@ -1,56 +1,33 @@
 import * as React from "react";
-import io from "socket.io-client";
 
 export default class Join extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            nbrPlayer: 1,
-            newserverName: "newServer",
-            serverName: "Server name",
-            socket: "",
+            server: "",
             playername: "",
-            welcomeMessage: "",
         };
-        this.handleChange = this.handleChange.bind(this);
+
         this.handlePlayerName = this.handlePlayerName.bind(this);
-        this.initSocket = this.initSocket.bind(this);
+        this.handleJoin = this.handleJoin.bind(this);
     }
 
-    handleChange(data) {
-        this.setState({
-            [data.target.name]: data.target.value,
-        });
+    handlePlayerName(event) {
+        this.setState({playername: event.target.value});
     }
 
-    async initSocket(e) {
-        e.preventDefault();
-        await this.setState({
-            socket: io(),
-        });
-        this.state.socket.emit("connectionAttempt", {
-            playername: this.state.playername,
-        });
-        this.state.socket.on("connectionSuccessful", data => {
-            this.setState({
-                playernumber: data.playerNumber,
-                welcomeMessage: `Hello ${
-                    data.playerName
-                }, you can now send and recieve messages`,
-            });
-            console.log(data.welcome);
-        });
-        this.state.socket.on("Message", data => {
-            this.setState({
-                messages: data.messages,
-            });
-        });
+    handleJoin(event) {
+        event.preventDefault();
+        const playername = this.state.playername;
+
+        this.props.initSocket(playername);
     }
 
     render() {
         return (
             <div className="join card">
                 <h1>{"Jump in!"}</h1>
+                <p>{this.props.welcomeMessage}</p>
                 <form>
                     <div>
                         <input
@@ -58,9 +35,9 @@ export default class Join extends React.Component {
                             name="playername"
                             placeholder="Your name here"
                             value={this.state.playername}
-                            onChange={this.props.handlePlayerName}
+                            onChange={this.handlePlayerName}
                         />
-                        <button onClick={this.initSocket}>{"Join"}</button>
+                        <button onClick={this.handleJoin}>{"Join"}</button>
                         <button onClick={this.disconnect}>
                             {"Disconnect"}
                         </button>

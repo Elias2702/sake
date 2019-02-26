@@ -30,7 +30,7 @@ export default class ColorPicker extends React.Component {
         return (
             <div className="listColorPawnsContainer">
                 {this.displayColorPawns()}
-                <button onClick={this.props.submitColors}>{Submit}</button>
+                <button onClick={this.props.submitColors}>{"Submit"}</button>
             </div>
         );
     }

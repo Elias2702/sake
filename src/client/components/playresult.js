@@ -6,10 +6,12 @@ export default class Playresult extends React.Component {
     }
 
     render() {
-        const answer = this.props.answer.map(color => {
+        const answer = this.props.answer.map((color, index) => {
+            let i = index;
+
             return (
                 <div
-                    key={color.id}
+                    key={i}
                     className="colorContainer"
                     style={{
                         backgroundColor: this.props.colorList[color],

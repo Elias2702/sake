@@ -116,7 +116,7 @@ export default class HelloWorld extends React.Component {
                 <hr />
                 <p>{this.state.welcomeMessage}</p>
                 <hr />
-                <p>{messageItem}</p>
+                <div>{messageItem}</div>
             </div>
         );
     }

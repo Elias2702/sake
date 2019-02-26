@@ -7,7 +7,7 @@ export default class Login extends React.Component {
 
         this.state = {
             socket: "",
-            message: "",
+            playername: "",
         };
 
         this.initSocket = this.initSocket.bind(this);
@@ -20,19 +20,20 @@ export default class Login extends React.Component {
         await this.setState({
             socket: io(),
         });
-        this.state.socket.emit("connectionAttempt", () => {});
+        this.state.socket.emit("connectionAttempt", {
+            playername: this.state.playername,
+        });
         this.state.socket.on("connectionSuccessful", data => {
-            console.log(data.welcome);
+            this.setState({
+                welcomeMessage: `Hello ${
+                    data.playerName
+                }, you can now send and recieve messages`,
+            });
+            console.log("c'est bon je crois");
         });
         this.state.socket.on("Message", data => {
             this.setState({
-                message: data.message,
-            });
-        });
-        this.state.socket.on("test Message", data => {
-            console.log(data);
-            this.setState({
-                messages: data.message,
+                messages: data.messages,
             });
         });
     }
@@ -43,8 +44,10 @@ export default class Login extends React.Component {
         });
     }
 
-    handleChange(event) {
-        this.setState({message: event.target.value});
+    handleChange(data) {
+        this.setState({
+            [data.target.name]: data.target.value,
+        });
     }
 
     render() {
@@ -53,17 +56,14 @@ export default class Login extends React.Component {
                 <form>
                     <input
                         type="text"
-                        name="message"
-                        placeholder="Your message here"
-                        value={this.state.message}
+                        name="playername"
+                        placeholder="Pseudo"
                         onChange={this.handleChange}
                     />
                     <button onClick={this.initSocket}>{"Join"}</button>
                 </form>
                 <hr />
                 <small>{"becode/Mastermind"}</small>
-                <hr />
-                <p>{this.state.message}</p>
             </div>
         );
     }

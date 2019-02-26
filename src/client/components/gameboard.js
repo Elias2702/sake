@@ -16,11 +16,54 @@ export default class Gameboard extends React.Component {
                 "purple",
                 "pink",
             ],
+            colorIndex: [0, 0, 0, 0, 0, 0],
         };
+
+        this.colorUp = this.colorUp.bind(this);
+        this.colorDown = this.colorDown.bind(this);
     }
+
+    colorUp(key) {
+        let temp = this.state.colorIndex;
+
+        if (this.state.colorIndex[key] === this.state.colorList.length - 1) {
+            temp[key] = 0;
+            this.setState({
+                colorIndex: temp,
+            });
+        } else {
+            temp[key] = temp[key] + 1;
+            this.setState({
+                colorIndex: temp,
+            });
+        }
+    }
+
+    colorDown(key) {
+        let temp = this.state.colorIndex;
+
+        if (this.state.colorIndex[key] === 0) {
+            temp[key] = this.state.colorList.length - 1;
+            this.setState({
+                colorIndex: temp,
+            });
+        } else {
+            temp[key] = temp[key] - 1;
+            this.setState({
+                colorIndex: temp,
+            });
+        }
+    }
+
     render() {
         return (
-            <ColorPicker colorList={this.state.colorList} availableColor={6} />
+            <ColorPicker
+                colorIndex={this.state.colorIndex}
+                colorDown={this.colorDown}
+                colorUp={this.colorUp}
+                colorList={this.state.colorList}
+                availableColor={6}
+            />
         );
     }
 }

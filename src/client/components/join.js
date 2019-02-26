@@ -1,45 +1,33 @@
 import * as React from "react";
-import io from "socket.io-client";
 
 export default class Join extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            nbrPlayer: 1,
-            newserverName: "newServer",
-            serverName: "Server name",
-            socket: "",
+            server: "",
             playername: "",
         };
-        this.handleChange = this.handleChange.bind(this);
-        this.handlePlayerName = this.handlePlayerName.bind(this);
-        this.initSocket = this.initSocket.bind(this);
-    }
 
-    handleChange(data) {
-        this.setState({
-            [data.target.name]: data.target.value,
-        });
+        this.handlePlayerName = this.handlePlayerName.bind(this);
+        this.handleJoin = this.handleJoin.bind(this);
     }
 
     handlePlayerName(event) {
         this.setState({playername: event.target.value});
     }
 
-    async initSocket() {
-        await this.setState({
-            socket: io.connect("http://localhost:8082"),
-        });
-        this.state.socket.on("news", data => {
-            console.log(data);
-            this.state.socket.emit("my other event", {my: "data"});
-        });
+    handleJoin(event) {
+        event.preventDefault();
+        const playername = this.state.playername;
+
+        this.props.initSocket(playername);
     }
 
     render() {
         return (
             <div className="join card">
                 <h1>{"Jump in!"}</h1>
+                <p>{this.props.welcomeMessage}</p>
                 <form>
                     <div>
                         <input
@@ -49,7 +37,7 @@ export default class Join extends React.Component {
                             value={this.state.playername}
                             onChange={this.handlePlayerName}
                         />
-                        <button onClick={this.initSocket}>{"Join"}</button>
+                        <button onClick={this.handleJoin}>{"Join"}</button>
                         <button onClick={this.disconnect}>
                             {"Disconnect"}
                         </button>

@@ -1,5 +1,6 @@
 import * as React from "react";
 import ColorPicker from "./colorPicker";
+import PreviewsPlay from "./previewsPlay";
 
 export default class Gameboard extends React.Component {
     constructor(props) {
@@ -75,20 +76,26 @@ export default class Gameboard extends React.Component {
 
     resetColors() {
         this.setState({
-            colorIndex: [0, 0, 0, 0, 0, 0],
+            colorIndex: [0, 1, 2, 3, 4, 5],
         });
     }
 
     render() {
         return (
-            <ColorPicker
-                colorIndex={this.state.colorIndex}
-                colorDown={this.colorDown}
-                colorUp={this.colorUp}
-                colorList={this.state.colorList}
-                availableColor={6}
-                submitColors={this.submitColors}
-            />
+            <>
+                <PreviewsPlay
+                    previewsPlay={this.state.previewsPlay}
+                    colorList={this.state.colorList}
+                />
+                <ColorPicker
+                    colorIndex={this.state.colorIndex}
+                    colorDown={this.colorDown}
+                    colorUp={this.colorUp}
+                    colorList={this.state.colorList}
+                    availableColor={6}
+                    submitColors={this.submitColors}
+                />
+            </>
         );
     }
 }

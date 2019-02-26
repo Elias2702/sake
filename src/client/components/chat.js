@@ -22,7 +22,8 @@ export default class HelloWorld extends React.Component {
         this.handlePlayerName = this.handlePlayerName.bind(this);
     }
 
-    async initSocket() {
+    async initSocket(e) {
+        e.preventDefault();
         await this.setState({
             socket: io(),
         });
@@ -88,32 +89,30 @@ export default class HelloWorld extends React.Component {
         });
 
         return (
-            <div>
+            <div className="chat card">
+                <h1>{"Talk to your fellow players ;-)"}</h1>
                 <form>
                     <input
                         type="text"
                         name="playername"
-                        placeholder="Your Name here"
+                        placeholder="Your name here"
                         value={this.state.playername}
                         onChange={this.handlePlayerName}
                     />
+                    <button onClick={this.initSocket}>{"Join"}</button>
+                    <button onClick={this.disconnect}>{"Disconnect"}</button>
                 </form>
-                <button onClick={this.initSocket}>{"Join"}</button>
-                <p>{`You are player number: ${this.state.playernumber}`}</p>
                 <form>
-                    <input
-                        type="text"
+                    <textarea
                         name="message"
                         placeholder="Your message here"
+                        rows="5"
                         value={this.state.message}
                         onChange={this.handleMessage}
                     />
+                    <button onClick={this.sendMessage}>{"Send Message"}</button>
                 </form>
-                <button onClick={this.sendMessage}>{"Send Message"}</button>
-                <button onClick={this.disconnect}>{"Disconnect"}</button>
-                <hr />
-                <small>{"becode/Mastermind"}</small>
-                <hr />
+                <p>{`You are player number: ${this.state.playernumber}`}</p>
                 <p>{this.state.welcomeMessage}</p>
                 <hr />
                 <div>{messageItem}</div>

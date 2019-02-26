@@ -133,6 +133,24 @@ body {
     background-color: rgba(123, 239, 178, 1);
 }
 
+.explanatory.message {
+    display: flex;
+}
+
+.icon.check {
+    color: rgba(46, 204, 113, 1);
+    font-size: 3rem;
+    vertical-align: middle;
+}
+
+.explanatory.text {
+    padding-left: 1rem;
+}
+
+.explanatory.text p {
+    margin-bottom: 0;
+}
+
 .conversation {
     background-color: rgba(255,255,255,0.3)
 }

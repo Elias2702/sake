@@ -11,11 +11,18 @@ export default class Join extends React.Component {
     render() {
         return (
             <div className="logout">
-                <p>
-                    {
-                        "Hello Elias, you have joined! You can now send and recieve messages in the chat ;)"
-                    }
-                </p>
+                <div className="explanatory message">
+                    <div className="icon check">
+                        <i className="fas fa-check-square" />
+                    </div>
+                    <div className="explanatory text">
+                        <p>
+                            {
+                                "Hello Elias, you have joined! You can now send and recieve messages in the chat ;)"
+                            }
+                        </p>
+                    </div>
+                </div>
                 <button onClick={this.handleDisconnect} className="warning">
                     {"Disconnect"}
                 </button>

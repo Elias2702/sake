@@ -69,6 +69,14 @@ export default class Gameboard extends React.Component {
         this.setState({
             previewsPlay: temp,
         });
+
+        this.resetColors();
+    }
+
+    resetColors() {
+        this.setState({
+            colorIndex: [0, 0, 0, 0, 0, 0],
+        });
     }
 
     render() {

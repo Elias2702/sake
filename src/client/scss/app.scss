@@ -2,6 +2,14 @@ body {
     margin: 0;
     padding: 0;
     background-color: rgba(255,255,255,0.3);
+    height: 100vh;
+}
+#app {
+    height: 100vh;
+}
+
+.container {
+    height: 100vh;
 }
 
 .colorContainer {
@@ -21,4 +29,22 @@ body {
     display: flex;
     justify-content: center;
     background-color: gray;
+    border-radius: 4px;
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 1%);
+}
+.previewsPlayContainer {
+    margin : 0 auto;
+    border: black solid 2px;
+    border-radius: 4px;
+    width: 250px;
+    height: 70vh;
+}
+.result{
+    display: flex;
+    .colorContainer{
+        border: lightgray solid 1px;
+    }
 }

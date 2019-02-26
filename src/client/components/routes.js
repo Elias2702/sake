@@ -3,7 +3,7 @@ import {Route, BrowserRouter as Router, Switch} from "react-router-dom";
 
 // COMPONENTS IMPORT //
 
-import Login from "./login";
+import Login from "./connection/connectionPanel";
 import Home from "./home";
 
 class Routes extends React.Component {

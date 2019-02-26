@@ -25,9 +25,9 @@ export default class Join extends React.Component {
 
     render() {
         return (
-            <div className="join card">
+            <div className="login">
                 <h1>{"Jump in!"}</h1>
-                <p>{this.props.welcomeMessage}</p>
+                <p>{"Please enter your name and click Join"}</p>
                 <form>
                     <div>
                         <input
@@ -37,9 +37,8 @@ export default class Join extends React.Component {
                             value={this.state.playername}
                             onChange={this.handlePlayerName}
                         />
-                        <button onClick={this.handleJoin}>{"Join"}</button>
-                        <button onClick={this.disconnect}>
-                            {"Disconnect"}
+                        <button onClick={this.handleJoin} className="primary">
+                            {"Join"}
                         </button>
                     </div>
                     <div>

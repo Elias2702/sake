@@ -1,7 +1,7 @@
 import * as React from "react";
 import io from "socket.io-client";
 import Chat from "./chat";
-import Join from "./join";
+import ConnectionPanel from "./connection/connectionPanel";
 
 export default class Home extends React.Component {
     constructor(props) {
@@ -9,10 +9,9 @@ export default class Home extends React.Component {
         this.state = {
             socket: "",
             playername: "",
-            welcomeMessage: "Please enter your name and click Join",
             message: "",
             messages: [],
-            displayChat: false,
+            isOnLine: false,
         };
 
         this.initSocket = this.initSocket.bind(this);
@@ -31,11 +30,8 @@ export default class Home extends React.Component {
         this.state.socket.on("connectionSuccessful", data => {
             this.setState({
                 playernumber: data.playerNumber,
-                welcomeMessage: `Hello ${
-                    data.playerName
-                }, you have joined! You can now send and recieve messages in the chat ;)`,
             });
-            this.setState({displayChat: true});
+            this.setState({isOnLine: true});
         });
         this.state.socket.on("Message", data => {
             this.setState({
@@ -45,19 +41,20 @@ export default class Home extends React.Component {
     };
 
     render() {
-        let chat = "";
+        let displayChat = "";
 
-        if (this.state.displayChat) {
-            chat = <Chat />;
+        if (this.state.isOnLine) {
+            displayChat = <Chat />;
         }
         return (
             <div>
-                <Join
+                <ConnectionPanel
                     initSocket={this.initSocket}
+                    endSocket={this.endSocket}
                     assignPlayerName={this.assignPlayerName}
-                    welcomeMessage={this.state.welcomeMessage}
+                    isOnLine={this.state.isOnLine}
                 />
-                {chat}
+                {displayChat}
             </div>
         );
     }

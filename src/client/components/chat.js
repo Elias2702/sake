@@ -2,7 +2,7 @@ import * as React from "react";
 import io from "socket.io-client";
 import MessageItem from "./messageItem";
 
-export default class HelloWorld extends React.Component {
+export default class Chat extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -97,10 +97,12 @@ export default class HelloWorld extends React.Component {
                         value={this.state.message}
                         onChange={this.handleMessage}
                     />
-                    <button onClick={this.sendMessage}>{"Send Message"}</button>
+                    <button onClick={this.sendMessage} className="primary">
+                        {"Send Message"}
+                    </button>
                 </form>
                 <hr />
-                {messageItem}
+                <div className="conversation">{messageItem}</div>
             </div>
         );
     }

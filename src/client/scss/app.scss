@@ -39,12 +39,16 @@ body {
     margin : 0 auto;
     border: black solid 2px;
     border-radius: 4px;
-    width: 250px;
+    width: 300px;
     height: 70vh;
 }
 .result{
     display: flex;
+    background-color: lightgrey;
+    margin: 3px;
+    border-radius: 3px;
+    padding: 2px;
     .colorContainer{
-        border: lightgray solid 1px;
+        margin: 3px;
     }
 }

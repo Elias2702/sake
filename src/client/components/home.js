@@ -4,8 +4,8 @@ import Chat from "./chat";
 import ConnectionPanel from "./connection/connectionPanel";
 
 export default class Home extends React.Component {
-    constructor(props) {
-        super(props);
+    constructor(props, context) {
+        super(props, context);
         this.state = {
             socket: "",
             playername: "",
@@ -15,6 +15,29 @@ export default class Home extends React.Component {
         };
 
         this.initSocket = this.initSocket.bind(this);
+        this.sendMessage = this.sendMessage.bind(this);
+        this.handleMessage = this.handleMessage.bind(this);
+    }
+
+    sendMessage(e) {
+        e.preventDefault();
+        this.setState({
+            index: this.state.index + 1,
+        });
+        const newMessage = {
+            author: this.state.playername,
+            content: this.state.message,
+            id: this.state.index,
+        };
+
+        this.state.messages.push(newMessage);
+        this.state.socket.emit("Message", {
+            messages: this.state.messages,
+        });
+    }
+
+    handleMessage(event) {
+        this.setState({message: event.target.value});
     }
 
     initSocket = async playername => {
@@ -44,7 +67,15 @@ export default class Home extends React.Component {
         let displayChat = "";
 
         if (this.state.isOnLine) {
-            displayChat = <Chat />;
+            chat = (
+                <Chat
+                    sendMessage={this.sendMessage}
+                    playerName={this.state.playername}
+                    messages={this.state.messages}
+                    message={this.state.message}
+                    handleMessage={this.handleMessage}
+                />
+            );
         }
         return (
             <div>

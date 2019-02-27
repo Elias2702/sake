@@ -53,9 +53,43 @@ export default class Game {
         }
     }
 
-    /*   checkCombinaison(combinaison){
-        for(let i=0;i<combinaison.length;i++){
-            
+    countcolor(combinaison) {
+        let count = [],
+            y = 0;
+
+        for (let i = 0; i < this.nbrCouleur; i++) {
+            y = 0;
+            for (let x = 0; x < combinaison.length; x++) {
+                if (combinaison[x] === i) {
+                    y++;
+                }
+            }
+            count[x] = y;
         }
-    } */
+        return count; // tableau du nombre de fois que chaque couleur est dans "combinaison"
+    }
+
+    judgetheproposal(proposal) {
+        let prop = countcolor(proposal),
+            code = countcolor(this.secretCode),
+            correctcolor = [0, 0];
+
+        for (let x = 0; x < this.nbrCouleur; x++) {
+            if (proposal[x] === this.secretCode[x]) {
+                correctcolor[1]++;
+            }
+        }
+        for (let x = 0; x < this.secretCode.length; x++) {
+            if (code[x] !== 0 && prop[x] !== 0) {
+                if (code[x] < prop[x]) {
+                    correctcolor[0] = correctcolor[0] + code[x];
+                    correctcolor[1] = correctcolor[1] - code[x];
+                } else {
+                    correctcolor[0] = correctcolor[0] + prop[x];
+                    correctcolor[1] = correctcolor[1] + prop[x];
+                }
+            }
+        }
+        return correctcolor;
+    }
 }

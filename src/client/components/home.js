@@ -67,7 +67,7 @@ export default class Home extends React.Component {
         let displayChat = "";
 
         if (this.state.isOnLine) {
-            chat = (
+            displayChat = (
                 <Chat
                     sendMessage={this.sendMessage}
                     playerName={this.state.playername}

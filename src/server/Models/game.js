@@ -9,6 +9,7 @@ export default class Game {
         this.secretCode = initCode(nbrPlayer);
         this.thinkingTime = 30;
         this.resultTime = 5;
+        this.listTentative = [];
     }
 
     initTentativeMax(nbr) {
@@ -34,4 +35,27 @@ export default class Game {
         }
         return code;
     }
+
+    getFirstCombinaison(listCombinaison) {
+        if (listCombinaison.length === 0) {
+            console.log("ESLINT m'embête");
+        } else {
+            let temp = "";
+
+            listCombinaison.array.forEach(combinaison => {
+                if (!temp) {
+                    temp = combinaison;
+                } else if (temp.timestamp > combinaison.timestamp) {
+                    temp = combinaison;
+                }
+            });
+            this.listTentative.push(temp);
+        }
+    }
+
+    /*   checkCombinaison(combinaison){
+        for(let i=0;i<combinaison.length;i++){
+            
+        }
+    } */
 }

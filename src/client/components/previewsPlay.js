@@ -1,17 +1,18 @@
 import * as React from "react";
 import Playresult from "./playresult";
 
-export default class ColorPicker extends React.Component {
+export default class PreviewsPlay extends React.Component {
     constructor(props) {
         super(props);
     }
 
     render() {
-        const result = this.props.previewsPlay.map(play => {
-            // eslint-disable-next-line react/jsx-key
+        const result = this.props.previewsPlay.map((play, index) => {
+            let i = index;
+
             return (
                 <Playresult
-                    key={play.id}
+                    key={i}
                     answer={play}
                     colorList={this.props.colorList}
                 />

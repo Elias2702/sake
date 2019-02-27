@@ -69,6 +69,11 @@ export default class Game {
         return count; // tableau du nombre de fois que chaque couleur est dans "combinaison"
     }
 
+    /* fonction qui rend un tableau avec en 0 le nombre de pion juste en 
+    // position et couleur et en 1 le nombre de couleur présente dans le 
+    // code mais a la mauvaise place  
+    */
+
     judgetheproposal(proposal) {
         let prop = countcolor(proposal),
             code = countcolor(this.secretCode),

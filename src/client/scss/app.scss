@@ -1,18 +1,25 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: rgba(255,255,255,0.3);
-    height: 100vh;
-}
-#app {
-    height: 100vh;
-}
-
-.container {
-    height: 100vh;
     background-color: rgba(22, 35, 46, 1);
+    height: 100vh;
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 1.2rem;
+}
+
+// .container {
+//     height: 100vh;
+//     background-color: rgba(22, 35, 46, 1);
+//     font-family: 'Source Sans Pro', sans-serif;
+//     font-size: 1.2rem;
+// }
+
+// CHAT CONSOLE + GAMEBOARD
+
+.gamescreen {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-evenly;
 }
 
 // ======= CONNECTION PANEL
@@ -227,10 +234,4 @@ body {
     width: 300px;
     height: 70vh;
     background-color:  lightcyan;
-}
-
-.gamescreen {
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: space-evenly;
 }

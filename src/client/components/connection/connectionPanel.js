@@ -20,7 +20,10 @@ export default class ConnectionPanel extends React.Component {
             );
         } else {
             displayConnectionPanel = (
-                <Logout endSocket={this.props.endSocket} />
+                <Logout
+                    endSocket={this.props.endSocket}
+                    playername={this.props.playername}
+                />
             );
         }
 

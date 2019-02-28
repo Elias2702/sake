@@ -1,6 +1,6 @@
 import * as React from "react";
 import ColorPicker from "./colorPicker";
-import PreviewsPlay from "./PreviewsPlay";
+import PreviewsPlay from "./previewsPlay";
 
 export default class Gameboard extends React.Component {
     constructor(props) {

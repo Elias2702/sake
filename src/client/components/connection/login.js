@@ -43,7 +43,7 @@ export default class Join extends React.Component {
                     </div>
                     <div>
                         <label>{"Pick a game room :"}</label>
-                        <select name="Rooms">
+                        <select name="Rooms" onChange={this.props.handleRoom}>
                             <option value="1">{"Kokuryu"}</option>
                             <option value="2">{"Otokoyama"}</option>
                             <option value="3">{"Juyondai"}</option>

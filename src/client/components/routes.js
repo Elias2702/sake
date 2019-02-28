@@ -3,17 +3,17 @@ import {Route, BrowserRouter as Router, Switch} from "react-router-dom";
 
 // COMPONENTS IMPORT //
 
-import Login from "./login";
-/* import Home from "./home"; */
-import Gameboard from "./gameboard";
-
+import Login from "./connection/connectionPanel";
+import Home from "./home";
+/* import Gameboard from "./game/gameboard";
+ */
 class Routes extends React.Component {
     render() {
         return (
             <Router>
                 <div className="container">
                     <Switch>
-                        <Route exact path="/" component={Gameboard} />
+                        <Route exact path="/" component={Home} />
                         <Route path="/coucou" component={Login} />
                     </Switch>
                 </div>

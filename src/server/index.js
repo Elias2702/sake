@@ -37,9 +37,9 @@ io.on("connection", socket => {
         io.emit("Message", {messages: data.messages});
         index++;
     });
-    socket.on("Tentive", () => {
+    /* socket.on("Tentive", () => {
         io.emit("Tentatest", {consolog: "je crois on approche"});
-    });
+    }); */
 
     socket.on("Disconnect", () => {
         console.log("Disconnected");

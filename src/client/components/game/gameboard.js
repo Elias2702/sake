@@ -88,22 +88,20 @@ export default class Gameboard extends React.Component {
 
     render() {
         return (
-            <>
+            <div>
                 <PreviewsPlay
                     previewsPlay={this.state.previewsPlay}
                     colorList={this.state.colorList}
                 />
-                <div className="card game">
-                    <ColorPicker
-                        colorIndex={this.state.colorIndex}
-                        colorDown={this.colorDown}
-                        colorUp={this.colorUp}
-                        colorList={this.state.colorList}
-                        availableColor={6}
-                        submitColors={this.submitColors}
-                    />
-                </div>
-            </>
+                <ColorPicker
+                    colorIndex={this.state.colorIndex}
+                    colorDown={this.colorDown}
+                    colorUp={this.colorUp}
+                    colorList={this.state.colorList}
+                    availableColor={6}
+                    submitColors={this.submitColors}
+                />
+            </div>
         );
     }
 }

@@ -1,5 +1,5 @@
 import * as React from "react";
-import Playresult from "./playresult";
+import Playresult from "../playresult";
 
 export default class PreviewsPlay extends React.Component {
     constructor(props) {

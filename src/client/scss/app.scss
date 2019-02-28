@@ -154,3 +154,17 @@ body {
 .conversation {
     background-color: rgba(255,255,255,0.3)
 }
+
+
+// ======= GAME Gameboard
+
+.game.card {
+    width: 50%;
+    max-width: 50%;
+    max-height: 70rem;
+    margin-left: 5rem;
+    margin-top: 5rem;
+    background-color: rgba(255,255,255,0.7);
+    border-radius: 2rem;
+    padding: 3rem;
+}

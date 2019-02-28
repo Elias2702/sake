@@ -1,7 +1,8 @@
 import * as React from "react";
 import io from "socket.io-client";
-import Chat from "./chat";
+import Chat from "./chat/chat";
 import ConnectionPanel from "./connection/connectionPanel";
+import Gameboard from "./game/gameboard";
 
 export default class Home extends React.Component {
     constructor(props, context) {
@@ -64,7 +65,8 @@ export default class Home extends React.Component {
     };
 
     render() {
-        let displayChat = "";
+        let displayChat = "",
+            displayGame = "";
 
         if (this.state.isOnLine) {
             displayChat = (
@@ -76,6 +78,7 @@ export default class Home extends React.Component {
                     handleMessage={this.handleMessage}
                 />
             );
+            displayGame = <Gameboard />;
         }
         return (
             <div>
@@ -86,6 +89,7 @@ export default class Home extends React.Component {
                     isOnLine={this.state.isOnLine}
                 />
                 {displayChat}
+                {displayGame}
             </div>
         );
     }

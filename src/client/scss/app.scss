@@ -1,31 +1,139 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: rgba(255,255,255,0.3);
-    height: 100vh;
-}
-#app {
-    height: 100vh;
+    background-color: rgba(22, 35, 46, 1);
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 1.2rem;
 }
 
-.container {
-    height: 100vh;
+// ======= CONNECTION PANEL
+
+.join.card {
+    width: 40%;
+    max-width: 40%;
+    max-height: 50rem;
+    margin-left: 5rem;
+    background-color: rgba(255,255,255,0.7);
+    border-radius: 2rem;
+    padding: 3rem;
+    margin-top: 5rem;
+    margin-bottom: 5rem;
 }
 
-.colorContainer {
-    height: 25px;
-    width: 25px;
-    border-radius: 50%;
+.join.card h1 {
+    font-size: 1.5rem;
+    margin-top: 0;
 }
 
-.colorPawnContainer {
-    display: flex;
-    flex-direction: column;
-    width: 30px;
-    align-items: center;
+.join.card p , label {
+    font-size: 1.2rem;
+    margin-top: 0
 }
 
-.listColorPawnsContainer{
+.join.card input {
+    border: none;
+    border-radius: 0.5rem;
+    height: 2.5rem;
+    width: 15rem;
+    padding-left: 1rem;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.join.card select {
+    border: none;
+    border-radius: 0.5rem;
+    height: 2.5rem;
+    width: 7.5rem;
+    padding-left: 1rem;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    margin-left: 1rem;
+}
+
+.join.card button {
+    border: none;
+    border-radius: 0.5rem;
+    height: 2.5rem;
+    font-size: 1.2rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    cursor: pointer;
+}
+
+.login button {
+    margin-left: 1rem;
+}
+
+.logout button {
+    margin-left: 0;
+}
+
+.primary:hover {
+    background-color: rgba(123, 239, 178, 1);
+}
+
+.warning:hover {
+    background-color: rgba(226, 106, 106, 1);
+}
+
+// ======= CHAT CONSOLE
+
+.chat.card {
+    width: 40%;
+    max-width: 40%;
+    max-height: 50rem;
+    margin-left: 5rem;
+    background-color: rgba(255,255,255,0.7);
+    border-radius: 2rem;
+    padding: 3rem;
+}
+
+.chat.card h1 {
+    font-size: 1.5rem;
+    margin-top: 0;
+}
+
+.chat.card input {
+    border: none;
+    border-radius: 0.5rem;
+    height: 2.5rem;
+    width: 15rem;
+    padding-left: 1rem;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.chat.card textarea {
+    border: none;
+    border-radius: 0.5rem;
+    height: 5rem;
+    width: 100%;
+    padding-left: 1rem;
+    margin-bottom: 1rem;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    color: inherit;
+}
+
+.chat.card button {
+    border: none;
+    border-radius: 0.5rem;
+    height: 2.5rem;
+    font-size: 1.2rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin-left: auto;
+    align-self: center;
+    cursor: pointer;
+}
+
+.chat.card button:hover {
+    background-color: rgba(123, 239, 178, 1);
+}
+
+.explanatory.message {
     display: flex;
     justify-content: center;
     background-color: gray;
@@ -51,4 +159,36 @@ body {
     .colorContainer{
         margin: 3px;
     }
+}
+
+.icon.check {
+    color: rgba(46, 204, 113, 1);
+    font-size: 3rem;
+    vertical-align: middle;
+}
+
+.explanatory.text {
+    padding-left: 1rem;
+}
+
+.explanatory.text p {
+    margin-bottom: 0;
+}
+
+.conversation {
+    background-color: rgba(255,255,255,0.3)
+}
+
+
+// ======= GAME Gameboard
+
+.game.card {
+    width: 50%;
+    max-width: 50%;
+    max-height: 70rem;
+    margin-left: 5rem;
+    margin-top: 5rem;
+    background-color: rgba(255,255,255,0.7);
+    border-radius: 2rem;
+    padding: 3rem;
 }

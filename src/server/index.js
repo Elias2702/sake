@@ -1,6 +1,7 @@
 import cors from "cors";
 import express from "express";
 import path from "path";
+// import gameClass from "./Models/game";
 
 let app = express(),
     server = require("http").Server(app), // eslint-disable-line new-cap

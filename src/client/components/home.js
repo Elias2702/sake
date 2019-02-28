@@ -47,6 +47,7 @@ export default class Home extends React.Component {
         this.setState({
             playername: playername,
         });
+        console.log("coucou");
         await this.setState({
             socket: io(),
         });
@@ -100,8 +101,10 @@ export default class Home extends React.Component {
                     isOnLine={this.state.isOnLine}
                     playername={this.state.playername}
                 />
-                {displayChat}
-                {displayGame}
+                <div className="gamescreen">
+                    {displayGame}
+                    {displayChat}
+                </div>
             </div>
         );
     }

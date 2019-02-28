@@ -69,7 +69,7 @@ export default class Game {
         return count; // tableau du nombre de fois que chaque couleur est dans "combinaison"
     }
 
-    judgetheproposal(proposal) {
+    judgeTheProposal(proposal) {
         let prop = countcolor(proposal),
             code = countcolor(this.secretCode),
             correctcolor = [0, 0];

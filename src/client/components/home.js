@@ -1,68 +1,95 @@
 import * as React from "react";
 import io from "socket.io-client";
+import Chat from "./chat/chat";
+import ConnectionPanel from "./connection/connectionPanel";
+import Gameboard from "./game/gameboard";
 
 export default class Home extends React.Component {
-    constructor(props) {
-        super(props);
+    constructor(props, context) {
+        super(props, context);
         this.state = {
-            nbrPlayer: 1,
-            newserverName: "newServer",
-            serverName: "Server name",
             socket: "",
+            playername: "",
+            message: "",
+            messages: [],
+            isOnLine: false,
         };
-        this.handleChange = this.handleChange.bind(this);
+
         this.initSocket = this.initSocket.bind(this);
+        this.sendMessage = this.sendMessage.bind(this);
+        this.handleMessage = this.handleMessage.bind(this);
     }
-    handleChange(data) {
+
+    sendMessage(e) {
+        e.preventDefault();
         this.setState({
-            [data.target.name]: data.target.value,
+            index: this.state.index + 1,
+        });
+        const newMessage = {
+            author: this.state.playername,
+            content: this.state.message,
+            id: this.state.index,
+        };
+
+        this.state.messages.push(newMessage);
+        this.state.socket.emit("Message", {
+            messages: this.state.messages,
         });
     }
 
-    async initSocket() {
+    handleMessage(event) {
+        this.setState({message: event.target.value});
+    }
+
+    initSocket = async playername => {
+        this.setState({
+            playername: playername,
+        });
         await this.setState({
             socket: io(),
         });
-        this.state.socket.on("news", data => {
-            console.log(data);
-            this.state.socket.emit("my other event", {my: "data"});
+        this.state.socket.emit("connectionAttempt", {
+            playername: this.state.playername,
         });
-    }
+        this.state.socket.on("connectionSuccessful", data => {
+            this.setState({
+                playernumber: data.playerNumber,
+            });
+            this.setState({isOnLine: true});
+        });
+        this.state.socket.on("Message", data => {
+            this.setState({
+                messages: data.messages,
+            });
+        });
+    };
 
     render() {
+        let displayChat = "",
+            displayGame = "";
+
+        if (this.state.isOnLine) {
+            displayChat = (
+                <Chat
+                    sendMessage={this.sendMessage}
+                    playerName={this.state.playername}
+                    messages={this.state.messages}
+                    message={this.state.message}
+                    handleMessage={this.handleMessage}
+                />
+            );
+            displayGame = <Gameboard />;
+        }
         return (
-            <div className="homeContainer">
-                <h1>{"Mastermind"}</h1>
-                <div>
-                    <form>
-                        <label>{"creation d'un nouveau serveur "}</label>
-                        <input
-                            type="text"
-                            onChange={this.handleChange}
-                            name="newServerName"
-                            value={this.state.serverName}
-                        />
-                        <label>{"nombre de joueur"}</label>
-                        <input
-                            type="number"
-                            max="4"
-                            min="1"
-                            value={this.state.nbrPlayer}
-                            onChange={this.handleChange}
-                            name="nbrPlayer"
-                        />
-                        <button onClick={this.initSocket}>{"Create"}</button>
-                    </form>
-                </div>
-                <form>
-                    <label>{"Join a server"}</label>
-                    <input
-                        type="text"
-                        onChange={this.handelChange}
-                        name="serverName"
-                    />
-                    <button onClick={this.initSocket}>{"Join"}</button>
-                </form>
+            <div>
+                <ConnectionPanel
+                    initSocket={this.initSocket}
+                    endSocket={this.endSocket}
+                    assignPlayerName={this.assignPlayerName}
+                    isOnLine={this.state.isOnLine}
+                />
+                {displayChat}
+                {displayGame}
             </div>
         );
     }

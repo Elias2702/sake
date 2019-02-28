@@ -17,7 +17,9 @@ export default class Join extends React.Component {
                     </div>
                     <div className="explanatory text">
                         <p>
-                            <strong>{"Hello Elias, you have joined!"}</strong>
+                            <strong>{`Hello ${
+                                this.props.playername
+                            }, you have joined!`}</strong>
                             <br />
                             {
                                 "You can now send and receive messages in the chat ;)"

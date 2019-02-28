@@ -54,8 +54,8 @@ export default class Home extends React.Component {
         this.state.socket.on("connectionSuccessful", data => {
             this.setState({
                 playernumber: data.playerNumber,
+                isOnLine: true,
             });
-            this.setState({isOnLine: true});
         });
         this.state.socket.on("Message", data => {
             this.setState({
@@ -87,6 +87,7 @@ export default class Home extends React.Component {
                     endSocket={this.endSocket}
                     assignPlayerName={this.assignPlayerName}
                     isOnLine={this.state.isOnLine}
+                    playername={this.state.playername}
                 />
                 {displayChat}
                 {displayGame}

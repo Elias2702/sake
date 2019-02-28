@@ -1,7 +1,7 @@
 import cors from "cors";
 import express from "express";
 import path from "path";
-/* import game from "./Models/game"; */
+// import gameClass from "./Models/game";
 
 let app = express(),
     server = require("http").Server(app), // eslint-disable-line new-cap
@@ -25,6 +25,8 @@ server.listen(APP_PORT, () =>
 
 io.on("connection", socket => {
     socket.on("connectionAttempt", data => {
+        // let game = new gameClass(4, socket.id);
+
         index = index + 1;
         console.log(`New player has joined: ${data.playername}`);
         socket.emit("connectionSuccessful", {

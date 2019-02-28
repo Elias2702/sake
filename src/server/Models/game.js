@@ -2,14 +2,15 @@ export default class Game {
     constructor(nbrPlayer, serveurName) {
         this.nbrPlayer = nbrPlayer;
         this.serveurName = serveurName;
-        this.tentativeMax = initTentativeMax(nbrPlayer);
-        this.nbrCouleur = initCouleur(nbrPlayer);
+        this.tentativeMax = this.initTentativeMax(nbrPlayer);
+        this.nbrCouleur = this.initCouleur(nbrPlayer);
         this.tentative = 0;
         this.codeLength = 0;
-        this.secretCode = initCode(nbrPlayer);
+        this.secretCode = this.initCode(nbrPlayer);
         this.thinkingTime = 30;
         this.resultTime = 5;
         this.listTentative = [];
+        this.gameStatus = "OnGoing";
     }
 
     initTentativeMax(nbr) {
@@ -30,7 +31,7 @@ export default class Game {
         } else {
             this.codeLength = 4;
         }
-        for (let i = 0; i < codeLength; i++) {
+        for (let i = 0; i < this.codeLength; i++) {
             code[i] = Math.floor(Math.random() * this.nbrCouleur);
         }
         return code;
@@ -94,6 +95,21 @@ export default class Game {
                     correctcolor[1] = correctcolor[1] + prop[x];
                 }
             }
+        }
+
+        this.tentative++;
+
+        if (correctcolor[0] === this.codeLength) {
+            // Win
+            this.gameStatus = "Win";
+        } else if (
+            this.tentative === this.tentativeMax &&
+            correctcolor[0] < this.codeLength
+        ) {
+            // Game Over
+            this.gameStatus = "Game Over";
+        } else {
+            // La partie continue
         }
         return correctcolor;
     }

@@ -67,30 +67,6 @@ export default class Home extends React.Component {
         });
     };
 
-    // initSocket = async playername => {
-    //     this.setState({
-    //         playername: playername,
-    //     });
-    //     await this.setState({
-    //         socket: io(),
-    //     });
-    //     this.state.socket.emit("connectionAttempt", {
-    //         playername: this.state.playername,
-    //         room: this.state.room,
-    //     });
-    //     this.state.socket.on("connectionSuccessful", data => {
-    //         this.setState({
-    //             playernumber: data.playerNumber,
-    //         });
-    //         this.setState({isOnLine: true});
-    //     });
-    //     this.state.socket.on("Message", data => {
-    //         this.setState({
-    //             messages: data.messages,
-    //         });
-    //     });
-    // };
-
     handleRoom(event) {
         console.log("test");
         this.setState({

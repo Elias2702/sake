@@ -10,13 +10,16 @@ export default class Playresult extends React.Component {
             let i = index;
 
             return (
-                <div
-                    key={i}
-                    className="colorContainer"
-                    style={{
-                        backgroundColor: this.props.colorList[color],
-                    }}
-                />
+                <>
+                    <div
+                        key={i}
+                        className="colorContainer"
+                        style={{
+                            backgroundColor: this.props.colorList[color],
+                        }}
+                    />
+                    <div />
+                </>
             );
         });
 

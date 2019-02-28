@@ -5,7 +5,8 @@ import {Route, BrowserRouter as Router, Switch} from "react-router-dom";
 
 import Login from "./connection/connectionPanel";
 import Home from "./home";
-
+/* import Gameboard from "./game/gameboard";
+ */
 class Routes extends React.Component {
     render() {
         return (

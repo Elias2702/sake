@@ -11,7 +11,7 @@ export default class Join extends React.Component {
     render() {
         return (
             <div className="logout">
-                <div className="explanatory message">
+                <div /* className="explanatory message" */>
                     <div className="icon check">
                         <i className="fas fa-check-square" />
                     </div>

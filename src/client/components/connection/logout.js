@@ -11,14 +11,16 @@ export default class Join extends React.Component {
     render() {
         return (
             <div className="logout">
-                <div className="explanatory message">
+                <div /* className="explanatory message" */>
                     <div className="icon check">
                         <i className="fas fa-check-square" />
                     </div>
                     <div className="explanatory text">
                         <p>
+                            <strong>{"Hello Elias, you have joined!"}</strong>
+                            <br />
                             {
-                                "Hello Elias, you have joined! You can now send and recieve messages in the chat ;)"
+                                "You can now send and receive messages in the chat ;)"
                             }
                         </p>
                     </div>

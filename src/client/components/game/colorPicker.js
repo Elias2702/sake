@@ -12,7 +12,15 @@ export default class ColorPicker extends React.Component {
         let colorPawns = [];
 
         for (let i = 0; i < this.props.availableColor; i++) {
-            colorPawns.push(<ColorPawn colorList={this.props.colorList} />);
+            colorPawns.push(
+                <ColorPawn
+                    colorIndex={this.props.colorIndex[i]}
+                    colorDown={() => this.props.colorDown(i)}
+                    colorUp={() => this.props.colorUp(i)}
+                    key={i}
+                    colorList={this.props.colorList}
+                />,
+            );
         }
 
         return colorPawns;
@@ -22,6 +30,7 @@ export default class ColorPicker extends React.Component {
         return (
             <div className="listColorPawnsContainer">
                 {this.displayColorPawns()}
+                <button onClick={this.props.submitColors}>{"Submit"}</button>
             </div>
         );
     }

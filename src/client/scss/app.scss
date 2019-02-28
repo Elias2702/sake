@@ -81,6 +81,7 @@ body {
 
 .chat.card {
     width: 20%;
+    min-width: 300px;
     max-width: 40%;
     max-height: 50rem;
     margin-left: 5rem;
@@ -224,4 +225,8 @@ body {
     display: flex;
     flex-direction: row-reverse;
     justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+.gameboard {
+    margin-bottom: 1.5rem; 
 }

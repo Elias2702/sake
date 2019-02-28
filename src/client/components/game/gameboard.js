@@ -88,7 +88,7 @@ export default class Gameboard extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="gameboard">
                 <PreviewsPlay
                     previewsPlay={this.state.previewsPlay}
                     colorList={this.state.colorList}

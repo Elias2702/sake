@@ -1,6 +1,7 @@
 import cors from "cors";
 import express from "express";
 import path from "path";
+/* import game from "./Models/game"; */
 
 let app = express(),
     server = require("http").Server(app), // eslint-disable-line new-cap
@@ -36,6 +37,10 @@ io.on("connection", socket => {
         io.emit("Message", {messages: data.messages});
         index++;
     });
+    socket.on("Tentive", () => {
+        io.emit("Tentatest", {consolog: "je crois on approche"});
+    });
+
     socket.on("Disconnect", () => {
         console.log("Disconnected");
         return;

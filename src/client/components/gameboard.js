@@ -61,6 +61,7 @@ export default class Gameboard extends React.Component {
     submitColors(e) {
         e.preventDefault();
         let tempTable = [],
+            timestamp = Date.now(),
             temp = this.state.previewsPlay;
 
         this.state.colorIndex.forEach(value => {
@@ -69,6 +70,11 @@ export default class Gameboard extends React.Component {
         temp.push(tempTable);
         this.setState({
             previewsPlay: temp,
+        });
+        console.log(timestamp);
+        this.state.socket.emit("Tentative", {
+            tentative: this.tempTable,
+            timestamp: timestamp,
         });
 
         this.resetColors();

@@ -14,8 +14,6 @@
         - "12345"
         - "9229"
       ports:
-        - "8082:12345"
+        - "8083:12345"
         - "9229"
       command: "nodemon --inspect=0.0.0.0:9229 -L --watch bin/server bin/server/index.js"
-  volumes:
-    mongo_db:

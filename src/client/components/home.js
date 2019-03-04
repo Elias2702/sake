@@ -8,7 +8,7 @@ export default class Home extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            socket: "",
+            socket: "   ",
             playername: "",
             message: "",
             messages: [],
@@ -36,6 +36,7 @@ export default class Home extends React.Component {
         this.state.messages.push(newMessage);
         this.state.socket.emit("Message", {
             messages: this.state.messages,
+            room: this.state.room,
         });
     }
 
@@ -113,7 +114,7 @@ export default class Home extends React.Component {
                     handleMessage={this.handleMessage}
                 />
             );
-            displayGame = <Gameboard />;
+            displayGame = <Gameboard socket={this.state.socket} />;
         }
         return (
             <div>

@@ -21,6 +21,16 @@ export default class Gameboard extends React.Component {
             previewsPlay: [],
         };
 
+        this.props.socket.on("Tentative", data => {
+            console.log(`reponse Tentative ------------ ${data.combinaison}`);
+            let temp = this.state.previewsPlay;
+
+            temp.push(data.combinaison);
+            this.setState({
+                previewsPlay: temp,
+            });
+        });
+
         this.colorUp = this.colorUp.bind(this);
         this.colorDown = this.colorDown.bind(this);
         this.submitColors = this.submitColors.bind(this);
@@ -72,8 +82,9 @@ export default class Gameboard extends React.Component {
             previewsPlay: temp,
         });
         console.log(timestamp);
-        this.state.socket.emit("Tentative", {
-            tentative: this.tempTable,
+        console.log(tempTable);
+        this.props.socket.emit("Tentative", {
+            tentative: tempTable,
             timestamp: timestamp,
         });
 

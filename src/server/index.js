@@ -1,7 +1,7 @@
 import cors from "cors";
 import express from "express";
 import path from "path";
-// import gameClass from "./Models/game";
+/* import GameClass from "./Models/game"; */
 
 let app = express(),
     server = require("http").Server(app), // eslint-disable-line new-cap
@@ -21,6 +21,7 @@ server.listen(APP_PORT, () =>
 io.on("connection", socket => {
     socket.on("connectionAttempt", data => {
         console.log(`dataroom =${data.room}`);
+
         socket.join(data.room, () => {
             index = index + 1;
             console.log(`New player has joined: ${data.playername}`);
@@ -33,13 +34,25 @@ io.on("connection", socket => {
             });
             console.log(`socketrooms =${Object.keys(socket.rooms)}`);
         });
-        socket.on("Message", datar => {
-            io.to(data.room).emit("Message", {messages: datar.messages});
+        socket.on("Message", dataMessage => {
+            io.to(dataMessage.room).emit("Message", {
+                messages: dataMessage.messages,
+            });
             index++;
         });
         socket.on("Disconnect", () => {
             console.log("Disconnected");
             return;
+        });
+        socket.on("Tentative", dataTentative => {
+            console.log(
+                `Réception combinaison ---------------- ${
+                    dataTentative.tentative
+                }`,
+            );
+            io.to(data.room).emit("Tentative", {
+                combinaison: dataTentative.tentative,
+            });
         });
     });
 });

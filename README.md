@@ -1,3 +1,6 @@
+This is a team assignment in the context of a web development training program.
+
+
 # Sake
 
 
